@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    res.send("connnected")
+    res.send("router connected")
 })
 
 module.exports = router;
