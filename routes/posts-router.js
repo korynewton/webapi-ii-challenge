@@ -1,10 +1,20 @@
 const express = require('express');
 
+const db = require('../data/db.js')
+
 const router = express.Router();
+
+router.use(express.json());
 
 
 router.get('/', (req, res) => {
-    res.send("router connected")
+    db.find()
+        .then( (posts) => {
+            res.status(200).json(posts)
+        } )
+        .catch( (error) => {
+            res.status(500).json({ error: "The posts information could not be retrieved." })
+        })
 })
 
 module.exports = router;
